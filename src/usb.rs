@@ -9,7 +9,7 @@ use core::marker::PhantomData;
 #[cfg(feature = "embassy-usb-driver-impl")]
 use embassy_usb_driver as driver;
 #[cfg(feature = "embassy-usb-driver-impl")]
-use embassy_usb_driver::EndpointType;
+use embassy_usb_driver::{EndpointType, EndpointAddress};
 #[cfg(feature = "usb-device-impl")]
 pub use musb::UsbdBus;
 #[cfg(feature = "embassy-usb-driver-impl")]
@@ -83,21 +83,23 @@ impl<'d, T: Instance> driver::Driver<'d> for Driver<'d, T> {
     fn alloc_endpoint_in(
         &mut self,
         ep_type: EndpointType,
+        ep_addr: Option<EndpointAddress>,
         max_packet_size: u16,
         interval_ms: u8,
     ) -> Result<Self::EndpointIn, driver::EndpointAllocError> {
         self.inner
-            .alloc_endpoint(ep_type, max_packet_size, interval_ms, None)
+            .alloc_endpoint(ep_type, ep_addr, max_packet_size, interval_ms)
     }
 
     fn alloc_endpoint_out(
         &mut self,
         ep_type: EndpointType,
+        ep_addr: Option<EndpointAddress>,
         max_packet_size: u16,
         interval_ms: u8,
     ) -> Result<Self::EndpointOut, driver::EndpointAllocError> {
         self.inner
-            .alloc_endpoint(ep_type, max_packet_size, interval_ms, None)
+            .alloc_endpoint(ep_type, ep_addr, max_packet_size, interval_ms)
     }
 
     fn start(

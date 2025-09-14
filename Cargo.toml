@@ -17,7 +17,6 @@ license = "MIT OR Apache-2.0"
 # py32-metapac = { path = "../py32-data/build/py32-metapac"}
 py32-metapac = { git = "https://github.com/py32-rs/py32-metapac.git" }
 
-
 cortex-m = { version = "0.7.7", features = [
     "critical-section-single-core",
     "critical-section",
@@ -33,41 +32,38 @@ embedded-hal-nb = { version = "1.0" }
 embedded-can = "0.4"
 embedded-io = { version = "0.6.0" }
 embedded-io-async = { version = "0.6.1" }
+embedded-storage = "0.3.1"
 nb = "1.0.0"
 
 defmt = { version = "1", optional = true }
-defmt-rtt = { version = "0.4", optional = true }
+defmt-rtt = { version = "1", optional = true }
 log = { version = "0.4", optional = true }
 critical-section = "1.2"
 cfg-if = "1.0.0"
 portable-atomic = { version = "1", features = ["require-cas"], optional = true }
-musb = { version = "0.3.0", optional = true, features = ["prebuild"] }
-# musb = { git = "https://github.com/decaday/musb.git", optional = true, features = ["prebuild"] }
-# musb = { path = "../musb", optional = true , features = ["prebuild"] }
-
-embassy-usb-driver = {version = "0.2.0", optional = true }
-usb-device = {version = "0.3.2", optional = true }
-
-
 futures-util = { version = "0.3.30", default-features = false }
+
 embassy-hal-internal = { version = "0.2.0", features = [
     "cortex-m",
     "prio-bits-4",
 ] }
 embassy-sync = { version = "0.7" }
-embassy-futures = { version = "0.1.1" }
-embassy-time-driver = { version = "0.2.0", optional = true }
-embassy-time = { version = "0.4.0", optional = true }
-embassy-time-queue-utils = { version = "0.2", optional = true }
+embassy-futures = { version = "0.1.2" }
+embassy-time-driver = { version = "0.2.1", optional = true }
+embassy-time = { version = "0.5.0", optional = true }
+embassy-time-queue-utils = { version = "0.3", optional = true }
+embassy-embedded-hal = { version = "0.5.0", default-features = false }
+embassy-usb-driver = {version = "0.2.0", optional = true }
+usb-device = {version = "0.3.2", optional = true }
+musb = { version = "0.3.0", optional = true, features = ["prebuild"] }
+# musb = { git = "https://github.com/decaday/musb.git", optional = true, features = ["prebuild"] }
+# musb = { path = "../musb", optional = true , features = ["prebuild"] }
 
-embassy-embedded-hal = { version = "0.4.0", default-features = false }
-embedded-storage = "0.3.1"
 
 
 [build-dependencies]
 # py32-metapac = { path = "../py32-data/build/py32-metapac", default-features = false, features = [
-# py32-metapac = { version = "0.3.0", default-features = false, features = [
-py32-metapac = { git = "https://github.com/py32-rs/py32-metapac.git", default-features = false, features = [
+py32-metapac = { version = "0.4.1", git = "https://github.com/py32-rs/py32-metapac.git", default-features = false, features = [
     "metadata",
 ] }
 

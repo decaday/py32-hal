@@ -906,7 +906,9 @@ fn main() {
         (("ltdc", "B5"), quote!(crate::ltdc::B5Pin)),
         (("ltdc", "B6"), quote!(crate::ltdc::B6Pin)),
         (("ltdc", "B7"), quote!(crate::ltdc::B7Pin)),
+        #[cfg(any(feature = "embassy-usb-driver-impl", feature = "usb-device-impl"))]
         (("usb", "DP"), quote!(crate::usb::DpPin)),
+        #[cfg(any(feature = "embassy-usb-driver-impl", feature = "usb-device-impl"))]
         (("usb", "DM"), quote!(crate::usb::DmPin)),
         (("otg", "DP"), quote!(crate::usb::DpPin)),
         (("otg", "DM"), quote!(crate::usb::DmPin)),

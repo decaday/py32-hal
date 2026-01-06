@@ -151,9 +151,10 @@ impl Config {
     }
 
     fn miso_af(&self) -> AfType {
-        AfType::output(
+        AfType::output_pull(
             OutputType::PushPull,
-            self.gpio_speed
+            self.gpio_speed,
+            self.miso_pull,
         )
     }
 
